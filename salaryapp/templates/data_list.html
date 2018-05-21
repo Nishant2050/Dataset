@@ -1,0 +1,55 @@
+{% extends 'graph.html' %}
+
+
+{% block blockbody %}
+        <div class="container" style="width:10000px;">
+            <h2>Data Table</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Age</th>
+                        <th>Workclass</th>
+                        <th>Fnlwgt</th>
+                        <th>Education</th>
+                        <th>Education_Num</th>
+                        <th>Marital_Status</th>
+                        <th>Occupation</th>
+                        <th>Relationship</th>
+                        <th>Race</th>
+                        <th>Sex</th>
+                        <th>Capital_Gain</th>
+                        <th>Capital_Loss</th>
+                        <th>Hours_per_week</th>
+                        <th>Native_Country</th>
+                        <th>Salary_Choices</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for data in all_data %}
+                            <tr>
+                                    <td>{{ data.age }}</td>
+                                    <td>{{ data.workclass }}</td>
+                                    <td>{{ data.fnlwgt }}</td>
+                                    <td>{{ data.education }}</td>
+                                    <td>{{ data.education_num }}</td>
+                                    <td>{{ data.martial_status }}</td>
+                                    <td>{{ data.occupation }}</td>
+                                    <td>{{ data.relationship }}</td>
+                                    <td>{{ data.race }}</td>
+                                    <td>{{ data.sex }}</td>
+                                    <td>{{ data.capital_gain }}</td>
+                                    <td>{{ data.capital_loss }}</td>
+                                    <td>{{ data.hours_per_week }}</td>
+                                    <td>{{ data.native_country }}</td>
+                                    <td>{{ data.salary_choices }}</td>
+                            </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock blockbody %}
+
+
+    {% comment %} {% for data in all_data %}
+        {{ data.age }}
+    {% endfor %} {% endcomment %}
