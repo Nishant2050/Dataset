@@ -231,6 +231,7 @@ class Data(models.Model):
         (GREATER_THAN,'>50K'),
         (LESS_THAN,'<=50K'),
     )
+    
 
 
     age             = models.FloatField(blank=True, null=True)

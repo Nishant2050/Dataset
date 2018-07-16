@@ -1,0 +1,15 @@
+amqp==2.3.2
+billiard==3.5.0.4
+celery==4.2.0
+dj-database-url==0.5.0
+Django==1.8
+django-celery==3.1.0
+eventlet==0.23.0
+greenlet==0.4.13
+kombu==4.2.1
+psycopg2==2.7.4
+python-decouple==3.1
+python3-memcached==1.51
+pytz==2018.5
+vine==1.1.4
+

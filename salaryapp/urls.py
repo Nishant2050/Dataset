@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^home/grapha/$', views.GraphA, name='grapha'),
     url(r'^home/graphb/$', views.GraphB, name='graphb'),
     url(r'^home/loaddata/$', views.LoadData.as_view(), name='loaddata'),
+    # url(r'^home/loaddata/$', views.loaddata, name='loaddata'),
 ]

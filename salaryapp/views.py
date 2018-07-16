@@ -4,6 +4,10 @@ from django.db.models import Count, Q
 from .models import Data
 from django.http import JsonResponse
 import json
+from django.views.decorators.cache import cache_page
+from celery import shared_task
+from django.core.paginator import Paginator
+from .tasks import dataset
 # Create your views here.
 
 def Home(request):
@@ -99,6 +103,7 @@ def GraphB(request):
         'data': [count_data[5]],
         'color': 'blue'
     }
+    
 
     chart = {
         'chart': {'type': 'column'},
@@ -109,8 +114,32 @@ def GraphB(request):
 
     return JsonResponse(chart)
 
+# @cache_page(60*15)
 
 class LoadData(ListView):
     model = Data
-    context_object_name = 'all_data'
+    # context_object_name = 'all_data'
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     print('context', context)
+    #     context['object_list'] = dataset
+    #     print('aftercontext', type(context['object_list']))
+    #     return context
+
     template_name='data_list.html'
+    paginate_by  = 5
+
+# # @shared_task
+# def loaddata(request):
+#     all_data = Data.objects.all()
+#     page = request.GET.get('page',1)
+#     # print('page',page)
+#     paginator = Paginator(all_data, 5)
+#     try:
+#         page_obj = paginator.page(page)
+#     except PageNotAnInteger:
+#         page_obj = paginator.page(1)
+#     except EmptyPage:
+#         page_obj = paginator.page(paginator.num_pages)
+#     return render(request, 'data_list.html', {'all_data': all_data})

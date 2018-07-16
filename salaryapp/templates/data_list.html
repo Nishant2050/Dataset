@@ -2,7 +2,7 @@
 
 
 {% block blockbody %}
-        <div class="container" style="width:10000px;">
+        <div class="container" style="width:100000px;">
             <h2>Data Table</h2>
             <table class="table">
                 <thead>
@@ -10,22 +10,22 @@
                         <th>Age</th>
                         <th>Workclass</th>
                         <th>Fnlwgt</th>
-                        <th>Education</th>
-                        <th>Education_Num</th>
-                        <th>Marital_Status</th>
+                        <th>Edu</th>
+                        <th>Num</th>
+                        <th>Marital</th>
                         <th>Occupation</th>
-                        <th>Relationship</th>
+                        <th>Relation</th>
                         <th>Race</th>
                         <th>Sex</th>
-                        <th>Capital_Gain</th>
-                        <th>Capital_Loss</th>
-                        <th>Hours_per_week</th>
-                        <th>Native_Country</th>
-                        <th>Salary_Choices</th>
+                        <th>Gain</th>
+                        <th>Loss</th>
+                        <th>Hours</th>
+                        <th>Country</th>
+                        <th>Choices</th>
                     </tr>
                 </thead>
                 <tbody>
-                        {% for data in all_data %}
+                        {% for data in object_list %}
                             <tr>
                                     <td>{{ data.age }}</td>
                                     <td>{{ data.workclass }}</td>
@@ -46,7 +46,23 @@
                         {% endfor %}
                 </tbody>
             </table>
+            {% if is_paginated %}
+                <div class="pagination">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+                        <span class="page-current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
         </div>
+        
 {% endblock blockbody %}
 
 

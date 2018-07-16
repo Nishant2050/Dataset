@@ -1,0 +1,3 @@
+pip install eventlet
+celery -A salarydata worker -l info -P eventlet
+
